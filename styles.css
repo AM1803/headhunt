@@ -101,6 +101,8 @@ section {
     height: 200px;
     border-radius: 8px;
     overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.6s ease;
 }
 
 .card .front, .card .back {
@@ -123,14 +125,15 @@ section {
     transform: rotateY(180deg);
 }
 
-.card:hover .front {
+.card:hover .front, .card.flip .front {
     transform: rotateY(-180deg);
 }
 
-.card:hover .back {
+.card:hover .back, .card.flip .back {
     transform: rotateY(0);
 }
 
+/* Card colors */
 .orange-card .front {
     background-color: lightcoral;
 }
@@ -266,6 +269,19 @@ footer {
     .links, .form-container {
         width: 100%;
         margin-bottom: 20px;
+    }
+
+    /* Enable click-based flip on mobile devices */
+    .card {
+        cursor: pointer;
+    }
+
+    .card:active .front {
+        transform: rotateY(-180deg);
+    }
+
+    .card:active .back {
+        transform: rotateY(0);
     }
 }
 
